@@ -1,0 +1,9 @@
+<template>
+    <lightning-layout multiple-rows="true">
+        <template for:each={desks} for:item="floorDesk">
+            <lightning-layout-item key={floorDesk.floor} size="6" padding="horizontal-small" >
+                <c-desk-grid floor={floorDesk.floor} desks={floorDesk.desks} booking-date={bookingDate} ongridclick={selectDesk}></c-desk-grid>
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>
+</template>

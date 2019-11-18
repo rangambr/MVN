@@ -1,0 +1,42 @@
+<template>
+    <lightning-layout horizontal-align="center" vertical-align="center">
+        <lightning-layout-item size="12">
+            <header class="slds-modal__header">
+                <h2 class="slds-text-heading_medium slds-hyphenate bold-text">{floor}</h2>
+            </header>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <div class="slds-box slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none">
+        <lightning-layout multiple-rows="true">
+            <template for:each={desks} for:item="deskRow" >
+                <lightning-layout-item key={deskRow.desk.Id} size={numberOfColumns} padding="around-small">
+                    <div class="custom-box slds-box slds-p-around_medium slds-text-align_center">
+                        <div class="slds-text-align_left grid-cell">
+                            {deskRow.desk.Desk_No__c}
+                        </div>
+                        <div class="slds-text-align_center grid-cell">
+                            <template if:true={deskRow.available}>
+                                <lightning-button-icon-stateful data-id={deskRow.desk.Id} data-selected={deskRow.selected} icon-name="utility:check" selected={deskRow.selected} onclick={handleClickGrid} alternative-text="Book Desk"></lightning-button-icon-stateful>
+                            </template>
+                            <template if:false={deskRow.available}>
+                                <div data-id={deskRow.desk.Id} onmouseover={showUserDetails} onmouseout={hideUserDetails} class="pointer">
+                                    <span class="slds-avatar slds-avatar_circle slds-avatar_small">
+                                        <img data-id={deskRow.desk.Id} alt={deskRow.booking.User__r.Name} src={deskRow.booking.User__r.SmallPhotoUrl} title={deskRow.booking.User__r.FirstName}/>
+                                    </span>
+                                    <div class="slds-is-relative slds-col slds-float_right">
+                                        <section if:true={deskRow.popover} class="slds-popover slds-nubbin_left" role="dialog">
+                                            <div class="slds-popover__body">
+                                                <p>{deskRow.booking.User__r.Name}</p>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+    </div>
+</template>

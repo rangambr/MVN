@@ -1,0 +1,18 @@
+.grid-cell{
+    display: inline-block;
+    width: 50%;
+}
+
+.bold-text{
+    font-weight: 500;
+}
+
+.slds-popover.slds-nubbin_left{
+    position: absolute;
+    top: -0.40rem;
+    max-width: 7.0rem;
+}
+
+.pointer{
+    cursor: pointer;
+}

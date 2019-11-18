@@ -1,0 +1,33 @@
+<template>
+    <lightning-card>
+        <h3 slot="title">
+            <lightning-icon icon-name="utility:desktop" size="small"></lightning-icon>
+            <span class="slds-p-around_xx-small">
+                {label.Reserve_Your_Desk}
+            </span>
+        </h3>
+        <lightning-layout horizontal-align="center" vertical-align="center" multiple-rows="true">
+            <lightning-layout-item padding="around-small" size="6">
+                <div class="slds-form-element slds-form-element_horizontal">
+                    <lightning-combobox
+                        name="offices"
+                        label={label.Select_Office}
+                        value={selectedOffice}
+                        options={officeOptions}
+                        onchange={handleOfficeChange}>
+                    </lightning-combobox>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="6">
+                <div class="slds-form-element slds-form-element_horizontal">
+                    <lightning-input type="date" label={label.Booking_Date} date-style="short" required min={today} value={today} onchange={handleDateChange}></lightning-input>
+                </div>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout horizontal-align="center" vertical-align="center" multiple-rows="true">
+            <lightning-layout-item padding="horizontal-small" size="12">
+                <c-desk-layout desks={desks} booking-date={bookingDate} ongridupdate={handleGridUpdate}></c-desk-layout>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>
