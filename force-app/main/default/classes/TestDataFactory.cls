@@ -4,7 +4,7 @@ public class TestDataFactory {
     public static final String FLOOR_1 = 'Floor 1';
     public static final String FLOOR_2 = 'Floor 2';
 
-    public static User createUser(Boolean insertToDatabase, String profileName, String permissionSetName, String emailAddress, String userNameString, String alias){
+    public static User createUser(Boolean insertToDatabase, String profileName, String emailAddress, String userNameString, String alias){
         List<Profile> p = [SELECT Id FROM Profile WHERE Name = :profileName];
         Id queriedProfileId = p[0].Id;
 
@@ -22,13 +22,15 @@ public class TestDataFactory {
         if(insertToDatabase) {
             insert u;
         }
+        return u;
+    }
 
-        if(permissionSetName != null && insertToDatabase) {
-            PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Id = :permissionSetName LIMIT 1];
-            PermissionSetAssignment psa = new PermissionSetAssignment(PermissionSetId = ps.Id, AssigneeId = u.Id);
+    public static void assignPermissionSet(Id userId, String permissionSetName) {
+        if(permissionSetName != null) {
+            PermissionSet ps = [SELECT Id FROM PermissionSet WHERE Name = :permissionSetName LIMIT 1];
+            PermissionSetAssignment psa = new PermissionSetAssignment(PermissionSetId = ps.Id, AssigneeId = userId);
             insert psa;
         }
-        return u;
     }
 
     public static Office__c createOffice(Boolean insertToDatabase, String name, Integer noOfCols) {
@@ -54,7 +56,7 @@ public class TestDataFactory {
         return offices;
     }
 
-    public static Desk__c createDesk(Boolean insertToDatabase, Id officeId, Integer deskNo, String floor) {
+    public static Desk__c createDesk(Boolean insertToDatabase, Id officeId, String deskNo, String floor) {
         Desk__c desk = new Desk__c(Office__c = officeId, Floor__c = floor, Desk_No__c = deskNo);
 
         if(insertToDatabase) {
@@ -63,12 +65,14 @@ public class TestDataFactory {
         return desk;
     }
 
-    public static List<Desk__c> createDesks(Boolean insertToDatabase, Id officeId, String floor, Integer numberOfDesks) {
+    public static List<Desk__c> createDesks(Boolean insertToDatabase, List<Office__c> offices, List<String> floors, Integer numberOfDesks) {
         List<Desk__c> desks = new List<Desk__c> ();
-
-        for(Integer i = 0; i < numberOfDesks; i++) {
-            Desk__c desk = new Desk__c(Office__c = officeId, Floor__c = floor, Desk_No__c = i);
-            desks.add(desk);
+        for(Office__c office : offices) {
+            for(String floor : floors) {
+                for(Integer i = 0; i < numberOfDesks; i++) {
+                    desks.add(createDesk(false, office.Id, String.valueOf(i), floor));
+                }
+            }
         }
         
         if(insertToDatabase) {

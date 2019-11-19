@@ -100,11 +100,10 @@ export default class deskGrid extends LightningElement {
      */
     createBooking(deskId) {
         createDeskBooking({ deskId: deskId, bookingDate: this.bookingDate})
-            .then(result => {
-                if(result) {
-                    this.fireGridClickEvent();
-                    this.showNotification('', Desk_Booking_Success, 'success');
-                }
+            .then(() => {
+                this.fireGridClickEvent();
+                this.showNotification('', Desk_Booking_Success, 'success');
+                
             })
             .catch(error => {
                 this.error = error.body.message;

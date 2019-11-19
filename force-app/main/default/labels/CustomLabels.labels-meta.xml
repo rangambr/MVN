@@ -9,6 +9,14 @@
         <value>Booking Date</value>
     </labels>
     <labels>
+        <fullName>Booking_Date_Null</fullName>
+        <categories>Desk Booking</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Booking Date cannot be empty.</shortDescription>
+        <value>Booking Date cannot be empty.</value>
+    </labels>
+    <labels>
         <fullName>Desk_Booking_Success</fullName>
         <categories>Desk Booking</categories>
         <language>en_US</language>
