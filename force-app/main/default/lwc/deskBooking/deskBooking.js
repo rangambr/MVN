@@ -87,16 +87,18 @@ export default class deskBooking extends LightningElement {
      * @description Get desks and bookings from the database.
      */
     getDesks() {
-        deskInfo({ officeId: this.selectedOffice, bookingDate: this.bookingDate })
-            .then(result => {
-                if(result) {
-                   this.desks = JSON.parse(result);
-                }
-            })
-            .catch(error => {
-                this.error = error.body.message;
-                this.showNotification(error.statusText, error.body.message, 'error');
-            });
+        if(this.bookingDate && this.selectedOffice) {
+            deskInfo({ officeId: this.selectedOffice, bookingDate: this.bookingDate })
+                .then(result => {
+                    if(result) {
+                    this.desks = JSON.parse(result);
+                    }
+                })
+                .catch(error => {
+                    this.error = error.body.message;
+                    this.showNotification(error.statusText, error.body.message, 'error');
+                });
+        }
     }
 
     /**
