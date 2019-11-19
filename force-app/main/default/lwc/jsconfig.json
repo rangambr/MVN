@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "c/deskBooking": [
+                "deskBooking/deskBooking.js"
+            ],
+            "c/deskGrid": [
+                "deskGrid/deskGrid.js"
+            ],
+            "c/deskLayout": [
+                "deskLayout/deskLayout.js"
+            ]
+        }
+    },
+    "include": [
+        "**/*",
+        "../../../../.sfdx/typings/lwc/**/*.d.ts"
+    ],
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
+}

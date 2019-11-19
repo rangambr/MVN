@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Booking_Date</fullName>
+        <categories>Desk Booking</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Booking Date</shortDescription>
+        <value>Booking Date</value>
+    </labels>
+    <labels>
+        <fullName>Booking_Date_Null</fullName>
+        <categories>Desk Booking</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Booking Date cannot be empty.</shortDescription>
+        <value>Booking Date cannot be empty.</value>
+    </labels>
+    <labels>
+        <fullName>Desk_Booking_Success</fullName>
+        <categories>Desk Booking</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Desk Booking Success</shortDescription>
+        <value>Desk reserved successfully.</value>
+    </labels>
+    <labels>
+        <fullName>Desk_Cancellation_Success</fullName>
+        <categories>Desk Booking</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Desk Cancellation Success</shortDescription>
+        <value>Desk Booking removed successfully.</value>
+    </labels>
+    <labels>
+        <fullName>Reserve_Your_Desk</fullName>
+        <categories>Desk Booking</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Reserve Your Desk</shortDescription>
+        <value>Reserve Your Desk: Select an office, pick a date and choose your desk.</value>
+    </labels>
+    <labels>
+        <fullName>Select_Office</fullName>
+        <categories>Desk Booking</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Select Office</shortDescription>
+        <value>Select Office</value>
+    </labels>
+</CustomLabels>
