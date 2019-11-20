@@ -10,5 +10,10 @@
         <operation>equals</operation>
         <value>1</value>
     </filters>
+    <filters>
+        <field>Date_of_Booking__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>TODAY</value>
+    </filters>
     <label>My Bookings</label>
 </ListView>
