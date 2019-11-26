@@ -16,7 +16,7 @@ public with sharing class DeskBookingHelper {
             if(simulateException) {
                 throw new QueryException();
             }
-            List<Office__c> offices = [SELECT Id, Name, Number_of_Columns__c FROM Office__c ORDER BY Name LIMIT 10 ];
+            List<Office__c> offices = [SELECT Id, Name, Number_of_Columns__c FROM Office__c WITH SECURITY_ENFORCED ORDER BY Name LIMIT 10 ];
             return JSON.serialize(offices);
         } catch (Exception ex) {
             throw new AuraHandledException(ex.getMessage());
